@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./output.css" rel="stylesheet" />
+  <title>Tailwind HTML Starter</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.store('info', {
+        'Enrichment': {
+          'Content': 'Elephants are very intelligent, so the Smithsonian\'s National Zoo provides them with enrichment activities to ensure they stay sharp. The enrichment program provides physically and mentally stimulating toys, activities and environments for the Zoo\'s animals. An exhibit\'s design is carefully and deliberately planned to ensure the comfort, safety and health of the animals. Each enrichment is tailored to give an animal the opportunity to use its natural behaviors in novel and exciting ways.'
+        },
+        'Conservation': {
+        },
+        'Nearby': {
+          'Content': 'Restrooms are located at the Elephant Outpost and feature light-hearted information and graphics that highlight fun facts about elephant bodily functions.'
+        },
+        'Meet the Animals': {
+          'Content': 'Females Trong Nhi and Nhi Linh, the Zoo\'s newest elephants, arrived on Nov. 7, 2022. They were a gift to the Smithsonian from the Rotterdam Zoo in South Holland, Netherlands. Trong Nhi was born May 13, 2003, at the Rotterdam Zoo. Her daughter, Nhi Linh, was born Aug. 10, 2013, at the same facility.'
+        }
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div x-data="{ toggled: Object.keys($store.info)[0]}">
+    <ul x-data class="flex border-b-2 border-gray-400 mt-2.5">
+      <template x-for="[tab, content] in Object.entries($store.info)">
+        <li x-show="content.Content" class="text-lg p-2.5 mx-1 border-x-2 border-t-2 rounded-t-md" :class="toggled === tab ? 'border-gray-400' : ''"
+          @click="toggled = tab" x-text="tab"></li>
+      </template>
+    </ul>
+    <template x-for="[tab, content] in Object.entries($store.info)">
+      <div x-show="toggled === tab" class="mt-2.5">
+        <span x-text="content.Content"></span>
+      </div>
+    </template>
+  </div>
+
+</body>
+
+</html>
