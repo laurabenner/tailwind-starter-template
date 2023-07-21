@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <title>Horizontal Link Bar</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <div class="scroll-smooth" x-data="{ links: [
+        { name: '1', icon: 'a', content: 'do' },
+        { name: '2', icon: 'b', content: 're' },
+        { name: '3', icon: 'c', content: 'mi' }
+      ]}">
+        <div class="bg-green-200 lg:p-2">
+            <ul
+                class="flex lg:gap-2 gap-0 m-0 px-2 justify-around lg:justify-center flex-wrap text-oxford-blue overflow-hidden container !mb-0 mx-auto">
+                <template x-for="link in links">
+                    <li :key="link.name"
+                        class="horizontal-links p-2 grow justify-start lg:justify-center m-0 lg:w-full lg:max-w-3xl flex lg:first:pl-0 even:border-r-0 odd:border-r-2 lg:!border-r-2 odd:pl-4 lg:last:border-none lg:pr-4 border-white lg:whitespace-nowrap shrink-0 basis-[50%] lg:basis-0 lg:shrink">
+                        <span class="text-green-800 mx-2" x-text="link.icon"></span>
+                        <a :href="'#' + link.name" x-text="link.name"></a>
+                    </li>
+                </template>
+            </ul>
+        </div>
+
+        <template x-for="link in links">
+            <section :id="link.name">
+                <h2 x-text="link.name" class="text-xl"></h2>
+                <p class="h-screen" x-text="link.content"></p>
+            </section>
+        </template>
+    </div>
+</body>
+
+</html>
