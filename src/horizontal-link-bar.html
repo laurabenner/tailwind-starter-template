@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
@@ -15,12 +15,12 @@
         { name: '2', icon: 'b', content: 're' },
         { name: '3', icon: 'c', content: 'mi' }
       ]}">
-        <div class="bg-green-200 lg:p-2">
+        <div class="bg-green-200 md:p-2 px-2" >
             <ul
-                class="flex lg:gap-2 gap-0 m-0 px-2 justify-around lg:justify-center flex-wrap text-oxford-blue overflow-hidden container !mb-0 mx-auto">
+                class="flex justify-around md:flex-row flex-col">
                 <template x-for="link in links">
                     <li :key="link.name"
-                        class="horizontal-links p-2 grow justify-start lg:justify-center m-0 lg:w-full lg:max-w-3xl flex lg:first:pl-0 even:border-r-0 odd:border-r-2 lg:!border-r-2 odd:pl-4 lg:last:border-none lg:pr-4 border-white lg:whitespace-nowrap shrink-0 basis-[50%] lg:basis-0 lg:shrink">
+                        class="px-2 md:py-2 py-4 grow justify-center flex md:border-r-2 md:last:border-r-0 md:border-b-0 border-b-2 last:border-b-0 border-white">
                         <span class="text-green-800 mx-2" x-text="link.icon"></span>
                         <a :href="'#' + link.name" x-text="link.name"></a>
                     </li>
